@@ -18,6 +18,12 @@ be checked against current documentation before customer commitments.
 
 ## Guided journeys
 
+![AI Gateway presentation studio in preparation mode, showing the three audience journeys, chapter agenda, source-linked content and presentation controls](docs/images/canvas-preview.png)
+
+*Preparation mode after installation. Choose an audience journey, then select
+Present for the customer-facing view; level selectors, timings and presenter
+notes are hidden while chapter navigation remains available.*
+
 | Journey | Duration | Focus |
 |---|---:|---|
 | Executive / L100 | 5 minutes | Value, governance outcomes and pilot decision |
