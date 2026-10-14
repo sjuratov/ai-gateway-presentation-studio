@@ -66,6 +66,7 @@ test("all journeys contain valid chapters and meet exact duration targets", () =
     assert.equal(track.steps.reduce((total, step) => total + step[1], 0), track.minutes);
   }
   const architect = content.tracks.find(track => track.id === "architect");
+  assert.deepEqual(architect.steps.slice(0, 2), [["why", 2], ["flow", 3]]);
   for (const id of ["model-code", "mcp-code", "automation", "release-progression"]) {
     assert.ok(architect.steps.some(step => step[0] === id));
   }

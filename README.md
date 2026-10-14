@@ -41,7 +41,7 @@ remain available.*
 |---|---:|---|
 | Executive / L100 | 5 minutes | Value, governance outcomes and pilot decision |
 | BDM / TDM / L200 | 30 minutes | Capabilities, adoption and governance choices |
-| Architects / L300-L400 | 60 minutes | Architecture, representative code, release progression and validation |
+| Architects / L300-L400 | 60 minutes | Positioning, architecture, representative code, release progression and validation |
 
 Preparation mode provides an agenda, timing, presenter notes, a timer and a
 searchable documentation library. Present mode hides the level selectors,
