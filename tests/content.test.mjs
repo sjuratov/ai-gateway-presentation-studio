@@ -73,6 +73,7 @@ test("all journeys contain valid chapters and meet exact duration targets", () =
 
 test("renderer safely embeds content and has valid inline JavaScript", async () => {
   const template = await readFile(new URL("presenter.html", folder), "utf8");
+  assert.ok(!template.includes("Customer conversation · authored guidance"));
   assert.equal(template.split("__CONTENT_JSON__").length, 2);
   const render = data => template.replace("__CONTENT_JSON__", JSON.stringify(data).replaceAll("<", "\\u003c"));
   const html = render(content);
@@ -81,4 +82,10 @@ test("renderer safely embeds content and has valid inline JavaScript", async () 
   for (const script of scripts) new vm.Script(script[1]);
   const hostile = render({ title: "</script><script>unexpected()</script>" });
   assert.equal([...hostile.matchAll(/<script>([\s\S]*?)<\/script>/g)].length, 2);
+});
+
+test("callouts are takeaways except for the pilot decision", () => {
+  for (const scene of content.scenes) {
+    assert.equal(scene.question.endsWith("?"), scene.id === "pilot", scene.id);
+  }
 });

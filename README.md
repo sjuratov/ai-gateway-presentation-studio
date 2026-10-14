@@ -30,10 +30,11 @@ presenter notes. Select Present to switch to the customer-facing view.*
 
 ![Customer-facing Present view of the same opening executive chapter, with preparation metadata hidden and chapter navigation visible](https://raw.githubusercontent.com/sjuratov/ai-gateway-presentation-studio/main/docs/images/canvas-present-view.png)
 
-*The same chapter in Present mode: the message, discussion question and source
+*The same chapter in Present mode: the message, takeaway and source
 links remain visible, while level selectors, agenda, timings, timer and presenter
-notes are hidden. Discussion prompts become larger, rounded callouts without
-the preparation-only authorship label. Back, Next chapter and Exit presentation
+notes are hidden. Rounded callouts emphasize takeaway statements; questions are
+reserved for slides that ask for a customer decision. No internal authorship
+label appears in either view. Back, Next chapter and Exit presentation
 remain available.*
 
 | Journey | Duration | Focus |
