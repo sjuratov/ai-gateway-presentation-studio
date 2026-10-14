@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Gateway | Customer presentation studio</title>
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const theme =
+      param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #b11f4b;
+  --cp-accent-hover: #9a1a41;
+  --cp-accent-soft: rgba(177, 31, 75, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(177, 31, 75, 0.12);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #fd8ea1;
+  --cp-accent-hover: #fb7b91;
+  --cp-accent-soft: rgba(253, 142, 161, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(253, 142, 161, 0.12);
+}
+*{box-sizing:border-box}body{margin:0;background:var(--cp-bg);color:var(--cp-text);font:16px/1.5 "Segoe UI",Aptos,Calibri,-apple-system,BlinkMacSystemFont,sans-serif}
+button,input{font:inherit}button{cursor:pointer;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-surface);color:var(--cp-text);padding:8px 12px}button:hover{border-color:var(--cp-accent);background:var(--cp-accent-soft)}button:disabled{opacity:.45;cursor:default}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--cp-accent);outline-offset:3px}a{color:var(--cp-link)}h1,h2,h3,p{margin:0}h1{font-size:clamp(28px,4vw,44px);line-height:1.15;letter-spacing:-.025em}h2{font-size:24px;line-height:1.25}h3{font-size:18px}small,.muted{color:var(--cp-text-muted)}.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cp-accent)}.primary{background:var(--cp-accent);color:var(--cp-accent-fg);border-color:var(--cp-accent)}.primary:hover{background:var(--cp-accent-hover)}[hidden]{display:none!important}
+header{display:flex;gap:16px;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--cp-border);background:var(--cp-bg-elevated)}.brand{font-size:20px;font-weight:600}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.shell{max-width:1440px;margin:auto;padding:24px}.intro{display:flex;gap:24px;justify-content:space-between;margin-bottom:20px}.intro p{max-width:660px;margin-top:8px}.badge{display:inline-block;padding:4px 8px;border:1px solid var(--cp-border);border-radius:8px;font-size:12px;color:var(--cp-text-muted)}.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}.track{text-align:left;padding:16px;border-radius:16px;display:flex;flex-direction:column;gap:8px}.track[aria-pressed=true]{border:2px solid var(--cp-accent);background:var(--cp-accent-soft);padding:15px}.track strong{font-size:18px}.track .duration{font-size:28px;color:var(--cp-accent);font-weight:600}.workspace{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px}.agenda{border-right:1px solid var(--cp-border);padding-right:16px}.agenda h3{margin-bottom:12px}.agenda button{width:100%;text-align:left;display:flex;gap:8px;justify-content:space-between;border:0;background:transparent;margin:4px 0;font-size:13px}.agenda button[aria-current=step]{background:var(--cp-accent-soft);color:var(--cp-accent);font-weight:600}.agenda span:last-child{white-space:nowrap}.stage{min-width:0}.slide{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;padding:32px;min-height:460px}.slide-top{display:flex;justify-content:space-between;gap:16px;margin-bottom:20px}.headline{font-size:clamp(20px,2.4vw,28px);color:var(--cp-text-muted);margin:16px 0 28px;max-width:860px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border-top:3px solid var(--cp-accent);background:var(--cp-surface-soft);border-radius:10px;padding:20px}.card p{font-size:16px;margin-top:12px}.question{margin-top:28px;padding:16px 20px;border-left:3px solid var(--cp-accent);background:var(--cp-accent-soft)}.question small{display:block;text-transform:uppercase;font-size:11px;letter-spacing:.1em;margin-bottom:4px}.source-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;font-size:12px}.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}.progress{height:4px;background:var(--cp-border);border-radius:4px;overflow:hidden}.progress div{height:100%;background:var(--cp-accent)}.notes{padding:20px;border:1px solid var(--cp-border);border-radius:16px;margin-top:12px;background:var(--cp-bg-elevated)}.notes h3{margin-bottom:8px}.timer{display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}.timer output{font-size:20px;min-width:64px}.over{color:var(--cp-danger)}footer{font-size:12px;color:var(--cp-text-muted);margin-top:24px}.diagram{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:24px}.node{padding:16px;text-align:center;border:1px solid var(--cp-border);border-radius:10px;flex:1}.node.gateway{border-color:var(--cp-accent);background:var(--cp-accent-soft)}.arrow{color:var(--cp-accent);font-size:24px}.library{padding:24px;border:1px solid var(--cp-border);border-radius:16px;background:var(--cp-surface)}.library-top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.library input{padding:10px 12px;background:var(--cp-surface-soft);color:var(--cp-text);border:1px solid var(--cp-border);border-radius:10px;width:min(400px,100%)}.doc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.doc{padding:16px;border:1px solid var(--cp-border);border-radius:10px}.doc p{font-size:14px;margin:8px 0}.caveats{margin-bottom:20px}.caveats li{margin:8px 0}.error{background:var(--cp-surface);color:var(--cp-danger);border:1px solid var(--cp-danger);padding:12px;margin:12px 24px;border-radius:10px}.present header,.present .intro,.present .tracks,.present .agenda,.present footer{display:none}.present .workspace{grid-template-columns:1fr}.present .shell{max-width:1600px}.present .slide{min-height:65vh}.present .slide h1{font-size:clamp(32px,4vw,56px)}.exit-present{display:none}.present .exit-present{display:block}.completed{color:var(--cp-success);font-weight:600}
+.card{border-top:0}.question{border-left:0}.agenda{min-width:0}.track{min-width:0}.source-links a{overflow-wrap:anywhere}
+.present .slide-top,.present .timer,.present #position,.present .progress,.present .notes{display:none}
+.examples{display:grid;gap:16px;margin-top:24px}.example{min-width:0;background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:10px;padding:20px}.example p{font-size:13px;color:var(--cp-text-muted);margin:8px 0 16px}.example pre{margin:0;overflow:auto;max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere}.example code{font:14px/1.55 Consolas,"Courier New",Courier,monospace;color:var(--cp-text)}.timeline{display:grid;gap:12px;margin-top:24px}.milestone{display:grid;grid-template-columns:116px minmax(0,1fr);gap:16px;padding:16px;background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:10px}.milestone time{color:var(--cp-accent);font-weight:600}.milestone p{margin-top:4px;font-size:15px}.milestone .source-links{margin-top:8px}.milestone small{display:block;margin-top:8px}
+@media(max-width:600px){.milestone{grid-template-columns:1fr}.example{padding:16px}}
+@media(max-width:950px){.workspace{grid-template-columns:1fr}.agenda{border-right:0;border-bottom:1px solid var(--cp-border);padding:0 0 16px}.agenda ol{display:flex;overflow:auto;list-style:none;padding:0;gap:8px}.agenda li{min-width:170px}.cards{grid-template-columns:1fr}.slide{padding:24px}.tracks{gap:8px}.track strong{font-size:16px}.doc-grid{grid-template-columns:1fr}}
+@media(max-width:600px){header,.intro,.library-top{flex-direction:column;align-items:flex-start}.tracks{grid-template-columns:1fr}.track{display:grid;grid-template-columns:1fr auto}.track .muted{grid-column:1/-1}.shell{padding:16px}.slide{padding:20px}.controls{flex-wrap:wrap}.diagram{flex-direction:column}.node{width:100%}.arrow{transform:rotate(90deg)}}
+@media print{header,.tracks,.intro,.agenda,.controls,.notes,footer,.library{display:none}.workspace{display:block}.slide{border:0;min-height:0}.shell{padding:0}.cards{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><div><div class="eyebrow">Customer presentation studio</div><div class="brand">AI Gateway</div></div><div class="toolbar"><button id="library-toggle">Documentation library</button><button id="notes-toggle" aria-pressed="false">Presenter notes</button><button id="theme">Toggle theme</button><button id="present" class="primary">Present</button></div></header>
+<div id="error" class="error" role="alert" hidden></div>
+<main class="shell">
+<div class="intro"><div><div class="eyebrow">One story. Three levels of depth.</div><h1>Govern AI access with confidence.</h1><p class="muted">Pick an audience, follow the timed journey, and explore the original documentation when the conversation goes deeper.</p></div><div><span class="badge">Documentation snapshot · 14 Oct 2026</span><p><span class="badge">Preview context · verify before commitments</span></p></div></div>
+<div class="tracks" id="tracks" aria-label="Presentation journeys"></div>
+<section id="library" class="library" hidden aria-label="Documentation library"><div class="library-top"><h2>Documentation library</h2><input id="search" type="search" aria-label="Search documentation" placeholder="Search models, identity, releases..."></div><details class="caveats"><summary>Source caveats & customer-safe framing</summary><ul id="caveats"></ul></details><div id="documents" class="doc-grid"></div></section>
+<div class="workspace" id="workspace"><nav class="agenda" aria-label="Journey chapters"><h3 id="agenda-heading"></h3><p class="muted" id="audience"></p><ol id="agenda" style="list-style:none;padding-left:0"></ol><small>Time allocations include discussion. No live Azure resources are changed.</small></nav>
+<section class="stage" aria-label="Presentation"><article class="slide" id="slide" tabindex="-1"></article><div class="progress" role="progressbar" aria-label="Journey progress" aria-valuemin="0" id="progress"><div id="bar"></div></div><div class="controls"><div class="toolbar"><button id="previous">Back</button><button id="next" class="primary">Next chapter</button><button id="exit" class="exit-present">Exit presentation</button></div><div class="timer"><output id="clock" aria-label="Elapsed presentation time">00:00</output><button id="timer-toggle">Start timer</button><button id="timer-reset">Reset</button></div><small id="position"></small></div><aside id="notes" class="notes" hidden><h3>Presenter briefing</h3><p id="note-text"></p><p class="muted" id="timing" style="margin-top:12px"></p></aside></section></div>
+<footer>Authored presentation guidance grounded in <a href="https://ai.gateway.azure.com/docs" target="_blank" rel="noopener noreferrer">AI Gateway documentation</a>. Pricing, SLA and roadmap promises are intentionally excluded. Select a journey, then Present to navigate its full chapter sequence using Back and Next chapter. Level selectors, preparation notes and timing stay hidden. Keyboard: ← / → chapters · N notes (preparation only) · P present · Esc exit. To present in Edge on this Mac, open this page's local URL while Copilot and the canvas remain open.</footer>
+</main>
+<script>
+const DATA = __CONTENT_JSON__;
+const $ = id => document.getElementById(id);
+let state = {track:"executive",step:0,notes:false,present:false};
+let revision = -1, pending = 0, library = false, elapsed = 0, running = false, started = 0;
+let queue = Promise.resolve();
+const escapeHtml = value => String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const link = source => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title)} ↗</a>`;
+function showError(error){$("error").textContent=error.message;$("error").hidden=false;}
+async function responseJson(response) { if(!response.ok) throw new Error(`Unable to save/read presentation (${response.status}): ${await response.text()}`); return response.json(); }
+function change(patch) {
+  state = {...state,...patch}; render(); pending++;
+  const next = {...state};
+  const task = queue.then(async () => {
+    const data = await responseJson(await fetch("/state",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(next)}));
+    revision=data.revision;$("error").hidden=true;
+  });
+  queue = task.catch(showError).finally(()=>{pending--;});
+}
+function resetTimer(){elapsed=0;running=false;started=0;updateClock();}
+function chooseTrack(id){resetTimer();change({track:id,step:0});}
+function move(offset) {
+  const track=DATA.tracks.find(t=>t.id===state.track);
+  const step=Math.max(0,Math.min(track.steps.length-1,state.step+offset));
+  if(step===state.step)return;
+  change({step});$("slide").focus();
+}
+function render(){
+  const track=DATA.tracks.find(t=>t.id===state.track);
+  const [id,minutes]=track.steps[state.step];
+  const scene=DATA.scenes.find(s=>s.id===id);
+  document.body.classList.toggle("present",state.present);
+  $("workspace").hidden=library;$("library").hidden=!library;
+  $("library-toggle").textContent=library?"Return to guided journey":"Documentation library";
+  $("notes-toggle").setAttribute("aria-pressed",state.notes);
+  $("notes").hidden=!state.notes;
+  $("tracks").innerHTML=DATA.tracks.map(t=>`<button class="track" data-track="${t.id}" aria-pressed="${t.id===state.track}"><span class="eyebrow">${t.level}</span><span class="duration">${t.minutes} min</span><strong>${t.name}</strong><span class="muted">${t.promise}</span></button>`).join("");
+  $("agenda-heading").textContent=track.name;$("audience").textContent=track.audience;
+  $("agenda").innerHTML=track.steps.map(([sid,duration],i)=>`<li><button data-step="${i}" ${i===state.step?'aria-current="step"':""}><span>${String(i+1).padStart(2,"0")} · ${escapeHtml(DATA.scenes.find(s=>s.id===sid).title)}</span><span>${duration}m</span></button></li>`).join("");
+  $("slide").innerHTML=`<div class="slide-top"><span class="eyebrow">${scene.section} / ${track.level}</span><span class="badge">${minutes} min conversation</span></div><h1>${scene.title}</h1><p class="headline">${scene.headline}</p>${scene.diagram?'<div class="diagram" aria-label="Conceptual flow from applications and agents through AI Gateway to models and tools"><div class="node">Applications & agents<br><small>Caller identity</small></div><span class="arrow" aria-hidden="true">→</span><div class="node gateway"><strong>AI Gateway</strong><br><small>Access · policy · telemetry</small></div><span class="arrow" aria-hidden="true">→</span><div class="node">Models & tools<br><small>Backend identity</small></div></div>':""}<div class="cards">${scene.cards.map(c=>`<div class="card"><h3>${c.title}</h3><p>${c.body}</p></div>`).join("")}</div><div class="question"><small>Customer conversation · authored guidance</small>${scene.question}</div><div class="source-links"><span class="muted">Source pages:</span>${scene.refs.map(i=>link(DATA.sources[i])).join("")}</div>`;
+  if(scene.examples) $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
+    `<section class="examples" aria-label="Representative code samples">${scene.examples.map(example=>`<article class="example"><h3>${escapeHtml(example.title)}</h3><p>${escapeHtml(example.caption)}</p><pre><code data-language="${escapeHtml(example.language)}">${escapeHtml(example.code)}</code></pre></article>`).join("")}</section>`);
+  if(scene.timeline) $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
+    `<section class="timeline" aria-label="Release progression">${scene.timeline.map(item=>`<article class="milestone"><time datetime="${escapeHtml(item.date)}">${escapeHtml(item.date)}</time><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p><small>Architecture takeaway: ${escapeHtml(item.implication)}</small><div class="source-links">${item.refs.map(i=>link(DATA.sources[i])).join("")}</div></div></article>`).join("")}</section>`);
+  $("previous").disabled=state.step===0;
+  const last=state.step===track.steps.length-1;
+  $("next").disabled=last;$("next").textContent=last?"Journey complete":"Next chapter";
+  $("position").textContent=`${state.step+1} / ${track.steps.length} chapters · ${track.minutes} min`;
+  $("position").classList.toggle("completed",last);
+  $("progress").setAttribute("aria-valuemax",track.steps.length);$("progress").setAttribute("aria-valuenow",state.step+1);
+  $("bar").style.width=`${100*(state.step+1)/track.steps.length}%`;
+  $("note-text").textContent=scene.notes;
+  const before=track.steps.slice(0,state.step).reduce((sum,s)=>sum+s[1],0);
+  $("timing").textContent=`Planned window: ${before}–${before+minutes} minutes. Chapter budget: ${minutes} minutes, including discussion. Source snapshot: ${DATA.reviewed}.`;
+  updateClock();
+}
+function renderDocuments(){
+  const query=$("search").value.toLowerCase();
+  const docs=DATA.sources.filter(s=>`${s.title} ${s.group} ${s.summary}`.toLowerCase().includes(query));
+  $("documents").innerHTML=docs.map(s=>`<article class="doc"><div class="eyebrow">${s.group}</div><h3>${link(s)}</h3><p>${s.summary}</p><small>Original documentation · opens externally</small></article>`).join("") || '<p class="muted">No source pages match this search.</p>';
+}
+function updateClock(){
+  const seconds=Math.floor((elapsed+(running?Date.now()-started:0))/1000);
+  $("clock").value=`${String(Math.floor(seconds/60)).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`;
+  const track=DATA.tracks.find(t=>t.id===state.track);
+  $("clock").classList.toggle("over",seconds>track.minutes*60);
+  $("timer-toggle").textContent=running?"Pause":"Start timer";
+}
+$("tracks").addEventListener("click",e=>{const b=e.target.closest("[data-track]");if(b)chooseTrack(b.dataset.track);});
+$("agenda").addEventListener("click",e=>{const b=e.target.closest("[data-step]");if(b)change({step:Number(b.dataset.step)});});
+$("previous").addEventListener("click",()=>move(-1));$("next").addEventListener("click",()=>move(1));
+$("notes-toggle").addEventListener("click",()=>change({notes:!state.notes}));
+$("present").addEventListener("click",()=>{library=false;change({present:true,notes:false});});
+$("exit").addEventListener("click",()=>change({present:false}));
+$("theme").addEventListener("click",()=>document.documentElement.setAttribute("data-theme",document.documentElement.dataset.theme==="dark"?"light":"dark"));
+$("library-toggle").addEventListener("click",()=>{library=!library;render();renderDocuments();});
+$("search").addEventListener("input",renderDocuments);
+$("timer-toggle").addEventListener("click",()=>{if(running){elapsed+=Date.now()-started;running=false;}else{running=true;started=Date.now();}updateClock();});
+$("timer-reset").addEventListener("click",resetTimer);
+document.addEventListener("keydown",e=>{
+  if(e.target.closest("input,textarea,select")||e.ctrlKey||e.metaKey||e.altKey)return;
+  if(e.key==="ArrowRight"&&!library){e.preventDefault();move(1);}
+  if(e.key==="ArrowLeft"&&!library){e.preventDefault();move(-1);}
+  if(e.key.toLowerCase()==="n"&&!state.present)change({notes:!state.notes});
+  if(e.key.toLowerCase()==="p"){library=false;change({present:!state.present,notes:false});}
+  if(e.key==="Escape"){library=false;change({present:false});}
+});
+$("caveats").innerHTML=DATA.caveats.map(c=>`<li>${escapeHtml(c)}</li>`).join("");
+render();renderDocuments();setInterval(updateClock,500);
+async function sync(){
+  if(pending)return;
+  try{
+    const data=await responseJson(await fetch("/state"));
+    if(pending)return;
+    if(data.revision!==revision){
+      const trackChanged=data.state.track!==state.track;
+      state=data.state;revision=data.revision;if(trackChanged)resetTimer();render();
+    }
+  }catch(error){showError(error);}
+}
+sync();setInterval(sync,2500);
+</script>
+</body>
+</html>
