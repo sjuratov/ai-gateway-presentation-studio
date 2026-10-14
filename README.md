@@ -32,7 +32,9 @@ presenter notes. Select Present to switch to the customer-facing view.*
 
 *The same chapter in Present mode: the message, discussion question and source
 links remain visible, while level selectors, agenda, timings, timer and presenter
-notes are hidden. Back, Next chapter and Exit presentation remain available.*
+notes are hidden. Discussion prompts become larger, rounded callouts without
+the preparation-only authorship label. Back, Next chapter and Exit presentation
+remain available.*
 
 | Journey | Duration | Focus |
 |---|---:|---|

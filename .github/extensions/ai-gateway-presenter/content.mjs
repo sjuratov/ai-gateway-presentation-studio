@@ -29,7 +29,7 @@ export const scenes = [
     ["Access sprawl", "Applications and agents need models and tools across multiple providers."],
     ["Consistent controls", "Centralize identity, policies, private connectivity and telemetry at the gateway."],
     ["Clear ownership", "Keep model hosting and agent orchestration in Foundry or the selected framework."]
-  ], [0,12,13], "Opening pitch: AI Gateway provides governed access to models and tools without becoming the agent runtime. The business value is a shared place to apply controls, rather than repeating them in every application. Treat efficiency and risk reduction as desired outcomes, not measured ROI claims.", "Where is AI access managed today: in each application, or centrally?"),
+  ], [0,12,13], "Opening pitch: AI Gateway provides governed access to models and tools without becoming the agent runtime. The business value is a shared place to apply controls, rather than repeating them in every application. Treat efficiency and risk reduction as desired outcomes, not measured ROI claims.", "Where do you govern AI access today—in each application, or centrally?"),
   scene("flow", "Architecture", "One governance layer, two runtime paths", "Govern the model request and the tool call—not just the chatbot.", [
     ["Applications & agents", "Agent Framework, Copilot SDK, LangGraph or Foundry Hosted Agents call published endpoints."],
     ["AI Gateway", "Authenticate the caller, apply applicable policies and route to the selected backend."],
