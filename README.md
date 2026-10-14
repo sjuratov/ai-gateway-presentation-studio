@@ -18,7 +18,7 @@ be checked against current documentation before customer commitments.
 
 ## Guided journeys
 
-![AI Gateway presentation studio in preparation mode, showing the three audience journeys, chapter agenda, source-linked content and presentation controls](docs/images/canvas-preview.png)
+![AI Gateway presentation studio in preparation mode, showing the three audience journeys, chapter agenda, source-linked content and presentation controls](https://raw.githubusercontent.com/sjuratov/ai-gateway-presentation-studio/main/docs/images/canvas-preview.png)
 
 *Preparation mode after installation. Choose an audience journey, then select
 Present for the customer-facing view; level selectors, timings and presenter
