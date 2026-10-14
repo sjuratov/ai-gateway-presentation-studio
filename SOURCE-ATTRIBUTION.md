@@ -16,6 +16,25 @@ The source catalog in
 URLs. Each chapter cites the pages supporting its product claims. The
 documentation library exposes these links directly.
 
+## Enterprise landing-zone reference
+
+The architect journey's final two chapters are based on the README and
+architecture diagram in
+[Azure-Samples/ai-hub-gateway-solution-accelerator](https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator).
+The four-layer responsibilities are summarized; authored prose uses the name
+**AI Governance Hub**.
+
+The source architecture image is reproduced unchanged in
+`.github/extensions/ai-gateway-presenter/assets/ai-governance-hub.png`,
+including embedded labels and preview markers. Its original URL appears in
+the source catalog and the adjacent `THIRD-PARTY-NOTICES.txt`, which includes
+the upstream MIT license and copyright notice. The image was retrieved on
+2026-10-14.
+
+This is a separate solution accelerator architecture, not documentation that
+every depicted feature is available in the AI Gateway SKU. The slides and
+presenter notes preserve that distinction.
+
 ## What is authored here
 
 The presentation journeys, time allocations, headline framing, discussion

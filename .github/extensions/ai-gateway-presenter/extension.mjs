@@ -2,11 +2,11 @@ import { createServer } from "node:http";
 import { readFile, writeFile, mkdir, rename } from "node:fs/promises";
 import { joinSession, createCanvas, CanvasError } from "@github/copilot-sdk/extension";
 import { content } from "./content.mjs";
+import { initialState, validateState } from "./presentation-state.mjs";
 
 const servers = new Map();
 const directory = new URL("./artifacts/", import.meta.url);
 const stateFile = new URL("presentation.json", directory);
-const initial = {track:"executive", step:0, notes:false, present:false};
 let state;
 let revision = 0;
 let writes = Promise.resolve();
@@ -16,17 +16,13 @@ async function loadState() {
     state = validate(JSON.parse(await readFile(stateFile, "utf8")));
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
-    state = {...initial};
+    state = {...initialState};
   }
   return state;
 }
 function validate(value) {
-  const track = content.tracks.find(t => t.id === value.track);
-  if (!track || !Number.isInteger(value.step) || value.step < 0 || value.step >= track.steps.length ||
-      typeof value.notes !== "boolean" || typeof value.present !== "boolean") {
-    throw new CanvasError("invalid_presentation", "Invalid presentation track, step or display settings.");
-  }
-  return {track:value.track, step:value.step, notes:value.notes, present:value.present};
+  try { return validateState(value); }
+  catch (error) { throw new CanvasError("invalid_presentation", error.message); }
 }
 async function updateState(value) {
   const next = validate(value);
@@ -52,6 +48,10 @@ async function startServer() {
       if (req.method === "GET" && req.url === "/") {
         res.setHeader("Content-Type", "text/html; charset=utf-8");
         res.end(html);
+      } else if (req.method === "GET" && req.url === "/assets/ai-governance-hub.png") {
+        const image = await readFile(new URL("./assets/ai-governance-hub.png", import.meta.url));
+        res.setHeader("Content-Type", "image/png");
+        res.end(image);
       } else if (req.method === "GET" && req.url === "/state") {
         res.setHeader("Content-Type", "application/json");
         res.end(JSON.stringify({state:await loadState(), revision}));

@@ -20,7 +20,9 @@ export const sources = [
   source("Aliases, Entra & streaming", "/docs/releases/2026-09-24", "Releases", "Stable aliases, Entra runtime access, gateway-scoped policies and streaming usage."),
   source("Identity cost overrides", "/docs/releases/2026-10-01", "Releases", "Identity and validated-claim budget overrides; first matching override wins."),
   source("Agent 365 integration", "/docs/releases/2026-10-08-agent-365", "Releases", "Discover and govern gateway MCP servers and individual tools from Agent 365."),
-  source("Tool threat protection", "/docs/releases/2026-10-08-tool-threat-protection", "Releases", "Evaluate tool arguments before invocation and tool results afterward with Defender and Purview.")
+  source("Tool threat protection", "/docs/releases/2026-10-08-tool-threat-protection", "Releases", "Evaluate tool arguments before invocation and tool results afterward with Defender and Purview."),
+  {title:"Enterprise AI Landing Zone accelerator", url:"https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator", group:"Landing zone", summary:"Four-layer architecture and a reference implementation of the Layer 1 AI Governance Hub."},
+  {title:"AI Governance Hub architecture · original diagram", url:"https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator/blob/main/assets/citadel-governance-hub-v1.png", group:"Landing zone", summary:"Original Azure Samples diagram of central governance, protected assets, agent execution and foundational security."}
 ];
 const scene = (id, section, title, headline, cards, refs, notes, question, extra = {}) =>
   ({ id, section, title, headline, cards: cards.map(([title, body]) => ({title, body})), refs, notes, question, ...extra });
@@ -142,10 +144,27 @@ export const scenes = [
     ["October 8", "Agent 365 inventory governance and Defender/Purview tool threat protection."]
   ], [14,15,16,17,18,19], "Content was reviewed October 14, 2026. Do not promise future features or infer GA/SLA/pricing from release notes. The portal is a changing preview source, and older guidance can lag releases. Check current regional availability, commercial terms and feature applicability before making commitments.", "Base design decisions on documented capabilities—not roadmap assumptions.")
 ];
+scenes.push(
+  scene("landing-zone", "Enterprise architecture", "Enterprise AI Landing Zone", "Separate responsibilities across four layers, with unified oversight.", [], [20],
+    "This four-layer framing is summarized from the Azure Samples accelerator README. The accelerator implements Layer 1, not every layer. Its APIM solution architecture is broader than the AI Gateway SKU described earlier; do not transfer accelerator features or policies into SKU availability claims. Use the table to locate platform ownership, agent operations, identity/lifecycle governance and security services. This is an architecture reference, not a mandatory deployment.",
+    "Centralize runtime governance while keeping agent execution autonomous within guardrails.", {layers:[
+      {layer:"Layer 1", name:"AI Governance Hub", responsibility:"Runtime enforcement: gateway, policy-as-code, identity validation, token controls, content filtering and cost attribution.", implementation:"AI hub gateway solution accelerator"},
+      {layer:"Layer 2", name:"Agent Operations", responsibility:"Agent runtime, traces, evaluations, fleet operations and compliance checks.", implementation:"Microsoft Foundry Agents & Control Plane"},
+      {layer:"Layer 3", name:"Agent Management", responsibility:"Agent identity and lifecycle governance, discovery, sponsorship and access management.", implementation:"Microsoft Agent 365"},
+      {layer:"Layer 4", name:"Security Foundation", responsibility:"Threat protection, data governance, authentication and authorization.", implementation:"Microsoft Defender, Purview & Entra"}
+    ]}),
+  scene("governance-hub", "Enterprise architecture", "AI Governance Hub architecture", "A central runtime governance plane connects protected assets and distributed agent workloads.", [], [20,21],
+    "Original architecture diagram reproduced unchanged from the Azure Samples accelerator under its MIT license. Its embedded labels and preview markers belong to the source. Explain protected central assets on the left, the governance plane in the middle, agent workloads on the right and the security/identity foundation below. The hub can integrate with existing enterprise landing-zone networking. This solution accelerator is distinct from the AI Gateway SKU; optional or preview components in the picture are not blanket product guarantees. Open the full-size image for detailed discussion.",
+    "Use a shared governance plane to connect enterprise AI assets, agent workloads and security controls.", {image:{
+      path:"/assets/ai-governance-hub.png",
+      alt:"Source architecture showing protected AI assets, central API Management governance, agent workloads, agent control plane and identity/security foundations.",
+      caption:"Original, unchanged architecture diagram from Azure-Samples/ai-hub-gateway-solution-accelerator. Source labels and preview markers are retained."
+    }})
+);
 export const tracks = [
   {id:"executive", name:"Executive pitch", level:"L100", minutes:5, audience:"Business sponsors & executives", promise:"Why it matters, the operating model and a clear pilot decision.", steps:[["why",1],["flow",1],["outcomes",1],["releases",1],["pilot",1]]},
   {id:"decision", name:"BDM / TDM briefing", level:"L200", minutes:30, audience:"Business & technical decision-makers", promise:"Capabilities, governance choices and the adoption conversation.", steps:[["why",2],["flow",3],["onboard",3],["models",3],["tools",3],["identity",3],["policies",3],["budgets",2],["observe",2],["releases",2],["pilot",4]]},
-  {id:"architect", name:"Architect deep dive", level:"L300 / L400", minutes:60, audience:"Architects & implementation teams", promise:"Positioning, request contracts, representative code, governance progression and validation.", steps:[["why",2],["flow",3],["onboard",2],["models",4],["model-code",4],["tools",4],["mcp-code",3],["identity",5],["policies",4],["budgets",3],["network",5],["observe",3],["integrate",2],["automation",4],["threat",3],["release-progression",3],["validation",4],["pilot",2]]}
+  {id:"architect", name:"Architect deep dive", level:"L300 / L400", minutes:60, audience:"Architects & implementation teams", promise:"Positioning, implementation and enterprise AI landing-zone architecture.", steps:[["why",2],["flow",3],["onboard",2],["models",3],["model-code",3],["tools",3],["mcp-code",3],["identity",4],["policies",3],["budgets",3],["network",4],["observe",3],["integrate",2],["automation",3],["threat",3],["release-progression",3],["validation",3],["pilot",2],["landing-zone",3],["governance-hub",5]]}
 ];
 export const content = { title:"AI Gateway", subtitle:"Customer presentation studio", reviewed:"2026-10-14", sourceHome:base+"/docs", sources, scenes, tracks, caveats:[
   "This canvas focuses on the AI Gateway portal/SKU documentation—not a blanket feature comparison across all API Management tiers.",
@@ -153,5 +172,6 @@ export const content = { title:"AI Gateway", subtitle:"Customer presentation stu
   "Security/identity and newer releases document Entra runtime access; older quickstarts focus on gateway-wide API keys.",
   "Observability guidance and newer releases document MCP monitoring; the older MCP guide still says it is unavailable.",
   "Model interfaces are documented as passthrough. Do not assume the protocol translation described for other APIM offerings applies here.",
-  "Presentation framing, discovery questions, time allocations and validation checklists are authored guidance, not product guarantees."
+  "Presentation framing, discovery questions, time allocations and validation checklists are authored guidance, not product guarantees.",
+  "The closing enterprise landing-zone slides summarize a separate Azure Samples solution accelerator. Its architecture and APIM implementation are not an AI Gateway SKU feature matrix."
 ]};

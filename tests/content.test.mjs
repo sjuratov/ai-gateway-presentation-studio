@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import { content } from "../.github/extensions/ai-gateway-presenter/content.mjs";
+import { initialState, validateState } from "../.github/extensions/ai-gateway-presenter/presentation-state.mjs";
 
 const folder = new URL("../.github/extensions/ai-gateway-presenter/", import.meta.url);
 
@@ -14,8 +15,13 @@ test("source snapshot and attribution are explicit", () => {
   const urls = content.sources.map(source => {
     assert.ok(source.title && source.group && source.summary);
     const url = new URL(source.url);
-    assert.equal(url.origin, "https://ai.gateway.azure.com");
-    assert.match(url.pathname, /^\/docs(?:\/|$)/);
+    if (source.group === "Landing zone") {
+      assert.equal(url.origin, "https://github.com");
+      assert.ok(url.pathname.startsWith("/Azure-Samples/ai-hub-gateway-solution-accelerator"));
+    } else {
+      assert.equal(url.origin, "https://ai.gateway.azure.com");
+      assert.match(url.pathname, /^\/docs(?:\/|$)/);
+    }
     return source.url;
   });
   assert.equal(new Set(urls).size, urls.length);
@@ -35,7 +41,7 @@ test("chapters and specialized content have complete source contracts", () => {
       assert.ok(typeof scene[field] === "string" && scene[field].length > 0, `${scene.id}: ${field}`);
     }
     checkReferences(scene.refs);
-    assert.ok(scene.cards.length || scene.timeline?.length);
+    assert.ok(scene.cards.length || scene.timeline?.length || scene.layers?.length || scene.image);
     for (const card of scene.cards) assert.ok(card.title && card.body);
     for (const example of scene.examples ?? []) {
       assert.ok(example.title && example.caption && example.language && example.code);
@@ -67,9 +73,38 @@ test("all journeys contain valid chapters and meet exact duration targets", () =
   }
   const architect = content.tracks.find(track => track.id === "architect");
   assert.deepEqual(architect.steps.slice(0, 2), [["why", 2], ["flow", 3]]);
+  assert.deepEqual(architect.steps.slice(-2).map(step => step[0]), ["landing-zone", "governance-hub"]);
   for (const id of ["model-code", "mcp-code", "automation", "release-progression"]) {
     assert.ok(architect.steps.some(step => step[0] === id));
   }
+});
+
+test("landing-zone content has four layers and a bundled original image", async () => {
+  const layers = content.scenes.find(scene => scene.id === "landing-zone").layers;
+  assert.deepEqual(layers.map(layer => layer.layer), ["Layer 1", "Layer 2", "Layer 3", "Layer 4"]);
+  const image = content.scenes.find(scene => scene.id === "governance-hub").image;
+  const bytes = await readFile(new URL("." + image.path, folder));
+  assert.equal(bytes.subarray(1, 4).toString(), "PNG");
+  for (const scene of content.scenes) {
+    const prose = [scene.title, scene.headline, scene.notes, scene.question,
+      ...(scene.layers ?? []).flatMap(layer => Object.values(layer)),
+      scene.image?.alt ?? "", scene.image?.caption ?? ""].join(" ");
+    assert.ok(!/citadel/i.test(prose));
+  }
+});
+
+test("hidden selections persist per journey and legacy state migrates", () => {
+  const legacy = {track:"executive", step:0, notes:false, present:false};
+  assert.deepEqual(validateState(legacy), initialState);
+  const input = {...initialState, hiddenByTrack:{executive:["why"], architect:["landing-zone","governance-hub"]}};
+  const valid = validateState(input);
+  assert.deepEqual(valid.hiddenByTrack, input.hiddenByTrack);
+  assert.notEqual(valid.hiddenByTrack, input.hiddenByTrack);
+  assert.equal(validateState({...input, present:true}).step, 1);
+  assert.equal(validateState({...input, present:false}).step, 0);
+  assert.throws(() => validateState({...input, hiddenByTrack:{executive:["not-a-slide"]}}));
+  assert.throws(() => validateState({...input, hiddenByTrack:{executive:["why","why"]}}));
+  assert.throws(() => validateState({...input, hiddenByTrack:{executive:content.tracks[0].steps.map(step=>step[0])}}));
 });
 
 test("renderer safely embeds content and has valid inline JavaScript", async () => {

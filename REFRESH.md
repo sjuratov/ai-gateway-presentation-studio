@@ -14,6 +14,12 @@ Review every category:
 - Governance: policies, security/identity, networking and observability.
 - Integrations: Foundry and supported agent frameworks.
 - Releases: every new entry since the previous `content.reviewed` date.
+- Enterprise landing-zone appendix: the README's four-layer table and original
+  architecture asset in Azure-Samples/ai-hub-gateway-solution-accelerator.
+  Keep this solution accelerator's claims separate from AI Gateway SKU claims.
+  Use AI Governance Hub in authored prose. When refreshing its bundled image,
+  preserve the upstream license in THIRD-PARTY-NOTICES.txt and update the
+  retrieval date. The current diagram intentionally retains all source labels.
 
 Read the linked release detail pages, not only the navigation summary.
 Record the review date and changed page URLs in the pull request.
@@ -128,6 +134,14 @@ If old state prevents opening after a chapter removal, back up the installation'
 `artifacts/` and reload to regenerate defaults. Obtain the user's permission
 before changing their local state. Never remove the extension folder to reset
 one saved position.
+
+Hidden-slide selections use stable IDs per journey. If removing or renaming a
+scene, migrate any stored hidden IDs or have users restore their journey's
+selection before updating. Do not silently hide new slides: by default they
+are included. Recheck that all-hidden selections are rejected, individual
+journeys remain independent, and Present skips hidden slides in both directions.
+The visible planned duration must exclude hidden slides without altering the
+full journey's duration target.
 
 ## 7. Run checks and review the actual canvas
 

@@ -69,6 +69,7 @@ button,input{font:inherit}button{cursor:pointer;border:1px solid var(--cp-border
 header{display:flex;gap:16px;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--cp-border);background:var(--cp-bg-elevated)}.brand{font-size:20px;font-weight:600}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.shell{max-width:1440px;margin:auto;padding:24px}.intro{display:flex;gap:24px;justify-content:space-between;margin-bottom:20px}.intro p{max-width:660px;margin-top:8px}.badge{display:inline-block;padding:4px 8px;border:1px solid var(--cp-border);border-radius:8px;font-size:12px;color:var(--cp-text-muted)}.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}.track{text-align:left;padding:16px;border-radius:16px;display:flex;flex-direction:column;gap:8px}.track[aria-pressed=true]{border:2px solid var(--cp-accent);background:var(--cp-accent-soft);padding:15px}.track strong{font-size:18px}.track .duration{font-size:28px;color:var(--cp-accent);font-weight:600}.workspace{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px}.agenda{border-right:1px solid var(--cp-border);padding-right:16px}.agenda h3{margin-bottom:12px}.agenda button{width:100%;text-align:left;display:flex;gap:8px;justify-content:space-between;border:0;background:transparent;margin:4px 0;font-size:13px}.agenda button[aria-current=step]{background:var(--cp-accent-soft);color:var(--cp-accent);font-weight:600}.agenda span:last-child{white-space:nowrap}.stage{min-width:0}.slide{background:var(--cp-surface);border:1px solid var(--cp-border);border-radius:16px;padding:32px;min-height:460px}.slide-top{display:flex;justify-content:space-between;gap:16px;margin-bottom:20px}.headline{font-size:clamp(20px,2.4vw,28px);color:var(--cp-text-muted);margin:16px 0 28px;max-width:860px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border-top:3px solid var(--cp-accent);background:var(--cp-surface-soft);border-radius:10px;padding:20px}.card p{font-size:16px;margin-top:12px}.question{margin-top:28px;padding:16px 20px;border-left:3px solid var(--cp-accent);background:var(--cp-accent-soft)}.question small{display:block;text-transform:uppercase;font-size:11px;letter-spacing:.1em;margin-bottom:4px}.source-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;font-size:12px}.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}.progress{height:4px;background:var(--cp-border);border-radius:4px;overflow:hidden}.progress div{height:100%;background:var(--cp-accent)}.notes{padding:20px;border:1px solid var(--cp-border);border-radius:16px;margin-top:12px;background:var(--cp-bg-elevated)}.notes h3{margin-bottom:8px}.timer{display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}.timer output{font-size:20px;min-width:64px}.over{color:var(--cp-danger)}footer{font-size:12px;color:var(--cp-text-muted);margin-top:24px}.diagram{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:24px}.node{padding:16px;text-align:center;border:1px solid var(--cp-border);border-radius:10px;flex:1}.node.gateway{border-color:var(--cp-accent);background:var(--cp-accent-soft)}.arrow{color:var(--cp-accent);font-size:24px}.library{padding:24px;border:1px solid var(--cp-border);border-radius:16px;background:var(--cp-surface)}.library-top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}.library input{padding:10px 12px;background:var(--cp-surface-soft);color:var(--cp-text);border:1px solid var(--cp-border);border-radius:10px;width:min(400px,100%)}.doc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.doc{padding:16px;border:1px solid var(--cp-border);border-radius:10px}.doc p{font-size:14px;margin:8px 0}.caveats{margin-bottom:20px}.caveats li{margin:8px 0}.error{background:var(--cp-surface);color:var(--cp-danger);border:1px solid var(--cp-danger);padding:12px;margin:12px 24px;border-radius:10px}.present header,.present .intro,.present .tracks,.present .agenda,.present footer{display:none}.present .workspace{grid-template-columns:1fr}.present .shell{max-width:1600px}.present .slide{min-height:65vh}.present .slide h1{font-size:clamp(32px,4vw,56px)}.exit-present{display:none}.present .exit-present{display:block}.completed{color:var(--cp-success);font-weight:600}
 .card{border-top:0}.question{border-left:0}.agenda{min-width:0}.track{min-width:0}.source-links a{overflow-wrap:anywhere}
 .present .slide-top,.present .timer,.present #position,.present .progress,.present .notes{display:none}
+.agenda .agenda-row{display:flex;gap:4px;align-items:center}.agenda .agenda-row .hide-slide{width:auto;flex:none;font-size:12px;border:1px solid var(--cp-border);padding:4px 6px}.agenda .agenda-row .select-slide{min-width:0;flex:1}.agenda-row.is-hidden .select-slide{opacity:.6;text-decoration:line-through}.agenda-row.is-hidden .hide-slide{color:var(--cp-accent)}#selection-summary{margin:12px 0;font-size:13px;color:var(--cp-text-muted)}#restore-slides{font-size:13px;margin-bottom:12px}.layers-wrapper{overflow:auto;margin-top:24px}.layers{width:100%;border-collapse:collapse;font-size:15px}.layers th,.layers td{text-align:left;vertical-align:top;padding:16px;border:1px solid var(--cp-border)}.layers th{background:var(--cp-accent-soft)}.layers td:first-child{white-space:nowrap}.architecture{margin:24px 0}.architecture img{display:block;width:100%;height:auto;border:1px solid var(--cp-border);border-radius:10px}.architecture figcaption{font-size:13px;color:var(--cp-text-muted);margin-top:12px}.architecture a{display:block}.image-error{color:var(--cp-danger);margin-top:12px}
 .question{padding:24px 32px;border-radius:10px;font-size:20px;font-weight:500;line-height:1.4;text-align:left}
 @media(max-width:600px){.question{padding:24px;font-size:18px}}
 .examples{display:grid;gap:16px;margin-top:24px}.example{min-width:0;background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:10px;padding:20px}.example p{font-size:13px;color:var(--cp-text-muted);margin:8px 0 16px}.example pre{margin:0;overflow:auto;max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere}.example code{font:14px/1.55 Consolas,"Courier New",Courier,monospace;color:var(--cp-text)}.timeline{display:grid;gap:12px;margin-top:24px}.milestone{display:grid;grid-template-columns:116px minmax(0,1fr);gap:16px;padding:16px;background:var(--cp-surface-soft);border:1px solid var(--cp-border);border-radius:10px}.milestone time{color:var(--cp-accent);font-weight:600}.milestone p{margin-top:4px;font-size:15px}.milestone .source-links{margin-top:8px}.milestone small{display:block;margin-top:8px}
@@ -85,14 +86,14 @@ header{display:flex;gap:16px;justify-content:space-between;align-items:center;pa
 <div class="intro"><div><div class="eyebrow">One story. Three levels of depth.</div><h1>Govern AI access with confidence.</h1><p class="muted">Pick an audience, follow the timed journey, and explore the original documentation when the conversation goes deeper.</p></div><div><span class="badge">Documentation snapshot · 14 Oct 2026</span><p><span class="badge">Preview context · verify before commitments</span></p></div></div>
 <div class="tracks" id="tracks" aria-label="Presentation journeys"></div>
 <section id="library" class="library" hidden aria-label="Documentation library"><div class="library-top"><h2>Documentation library</h2><input id="search" type="search" aria-label="Search documentation" placeholder="Search models, identity, releases..."></div><details class="caveats"><summary>Source caveats & customer-safe framing</summary><ul id="caveats"></ul></details><div id="documents" class="doc-grid"></div></section>
-<div class="workspace" id="workspace"><nav class="agenda" aria-label="Journey chapters"><h3 id="agenda-heading"></h3><p class="muted" id="audience"></p><ol id="agenda" style="list-style:none;padding-left:0"></ol><small>Time allocations include discussion. No live Azure resources are changed.</small></nav>
+<div class="workspace" id="workspace"><nav class="agenda" aria-label="Journey chapters"><h3 id="agenda-heading"></h3><p class="muted" id="audience"></p><p id="selection-summary" aria-live="polite"></p><button id="restore-slides">Show all slides</button><ol id="agenda" style="list-style:none;padding-left:0"></ol><small>Hide slides before presenting; they remain available here for preparation. Time allocations include discussion. No live Azure resources are changed.</small></nav>
 <section class="stage" aria-label="Presentation"><article class="slide" id="slide" tabindex="-1"></article><div class="progress" role="progressbar" aria-label="Journey progress" aria-valuemin="0" id="progress"><div id="bar"></div></div><div class="controls"><div class="toolbar"><button id="previous">Back</button><button id="next" class="primary">Next chapter</button><button id="exit" class="exit-present">Exit presentation</button></div><div class="timer"><output id="clock" aria-label="Elapsed presentation time">00:00</output><button id="timer-toggle">Start timer</button><button id="timer-reset">Reset</button></div><small id="position"></small></div><aside id="notes" class="notes" hidden><h3>Presenter briefing</h3><p id="note-text"></p><p class="muted" id="timing" style="margin-top:12px"></p></aside></section></div>
 <footer>Authored presentation guidance grounded in <a href="https://ai.gateway.azure.com/docs" target="_blank" rel="noopener noreferrer">AI Gateway documentation</a>. Pricing, SLA and roadmap promises are intentionally excluded. Select a journey, then Present to navigate its full chapter sequence using Back and Next chapter. Level selectors, preparation notes and timing stay hidden. Keyboard: ← / → chapters · N notes (preparation only) · P present · Esc exit. To present in Edge on this Mac, open this page's local URL while Copilot and the canvas remain open.</footer>
 </main>
 <script>
 const DATA = __CONTENT_JSON__;
 const $ = id => document.getElementById(id);
-let state = {track:"executive",step:0,notes:false,present:false};
+let state = {track:"executive",step:0,notes:false,present:false,hiddenByTrack:{}};
 let revision = -1, pending = 0, library = false, elapsed = 0, running = false, started = 0;
 let queue = Promise.resolve();
 const escapeHtml = value => String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -110,9 +111,28 @@ function change(patch) {
 }
 function resetTimer(){elapsed=0;running=false;started=0;updateClock();}
 function chooseTrack(id){resetTimer();change({track:id,step:0});}
+function visibleSteps(track) {
+  const hidden=state.hiddenByTrack?.[track.id]??[];
+  return track.steps.map(([id,minutes],index)=>({id,minutes,index})).filter(step=>!hidden.includes(step.id));
+}
+function startPresentation(){
+  const track=DATA.tracks.find(t=>t.id===state.track);
+  const visible=visibleSteps(track);
+  const target=visible.find(step=>step.index>=state.step)??visible[0];
+  library=false;change({present:true,notes:false,step:target.index});
+}
+function toggleSlide(id) {
+  const track=DATA.tracks.find(t=>t.id===state.track);
+  const current=state.hiddenByTrack?.[track.id]??[];
+  const hidden=current.includes(id)?current.filter(sid=>sid!==id):[...current,id];
+  if(hidden.length===track.steps.length){showError(new Error("Keep at least one slide visible."));return;}
+  change({hiddenByTrack:{...state.hiddenByTrack,[track.id]:hidden}});
+}
 function move(offset) {
   const track=DATA.tracks.find(t=>t.id===state.track);
-  const step=Math.max(0,Math.min(track.steps.length-1,state.step+offset));
+  const sequence=state.present?visibleSteps(track):track.steps.map((step,index)=>({index}));
+  const position=sequence.findIndex(step=>step.index===state.step);
+  const step=sequence[Math.max(0,Math.min(sequence.length-1,position+offset))].index;
   if(step===state.step)return;
   change({step});$("slide").focus();
 }
@@ -120,6 +140,9 @@ function render(){
   const track=DATA.tracks.find(t=>t.id===state.track);
   const [id,minutes]=track.steps[state.step];
   const scene=DATA.scenes.find(s=>s.id===id);
+  const visible=visibleSteps(track);
+  const selectedMinutes=visible.reduce((sum,step)=>sum+step.minutes,0);
+  const hidden=state.hiddenByTrack?.[track.id]??[];
   document.body.classList.toggle("present",state.present);
   $("workspace").hidden=library;$("library").hidden=!library;
   $("library-toggle").textContent=library?"Return to guided journey":"Documentation library";
@@ -127,22 +150,33 @@ function render(){
   $("notes").hidden=!state.notes;
   $("tracks").innerHTML=DATA.tracks.map(t=>`<button class="track" data-track="${t.id}" aria-pressed="${t.id===state.track}"><span class="eyebrow">${t.level}</span><span class="duration">${t.minutes} min</span><strong>${t.name}</strong><span class="muted">${t.promise}</span></button>`).join("");
   $("agenda-heading").textContent=track.name;$("audience").textContent=track.audience;
-  $("agenda").innerHTML=track.steps.map(([sid,duration],i)=>`<li><button data-step="${i}" ${i===state.step?'aria-current="step"':""}><span>${String(i+1).padStart(2,"0")} · ${escapeHtml(DATA.scenes.find(s=>s.id===sid).title)}</span><span>${duration}m</span></button></li>`).join("");
+  $("selection-summary").textContent=`${visible.length} of ${track.steps.length} slides included · ${selectedMinutes} min planned`;
+  $("restore-slides").disabled=hidden.length===0;
+  $("agenda").innerHTML=track.steps.map(([sid,duration],i)=>`<li class="agenda-row ${hidden.includes(sid)?"is-hidden":""}"><button class="select-slide" data-step="${i}" ${i===state.step?'aria-current="step"':""}><span>${String(i+1).padStart(2,"0")} · ${escapeHtml(DATA.scenes.find(s=>s.id===sid).title)}</span><span>${duration}m</span></button><button class="hide-slide" data-hide="${sid}" aria-pressed="${hidden.includes(sid)}" aria-label="${hidden.includes(sid)?"Show":"Hide"} slide: ${escapeHtml(DATA.scenes.find(s=>s.id===sid).title)}" ${!hidden.includes(sid)&&visible.length===1?"disabled":""}>${hidden.includes(sid)?"Show":"Hide"}</button></li>`).join("");
   $("slide").innerHTML=`<div class="slide-top"><span class="eyebrow">${scene.section} / ${track.level}</span><span class="badge">${minutes} min conversation</span></div><h1>${scene.title}</h1><p class="headline">${scene.headline}</p>${scene.diagram?'<div class="diagram" aria-label="Conceptual flow from applications and agents through AI Gateway to models and tools"><div class="node">Applications & agents<br><small>Caller identity</small></div><span class="arrow" aria-hidden="true">→</span><div class="node gateway"><strong>AI Gateway</strong><br><small>Access · policy · telemetry</small></div><span class="arrow" aria-hidden="true">→</span><div class="node">Models & tools<br><small>Backend identity</small></div></div>':""}<div class="cards">${scene.cards.map(c=>`<div class="card"><h3>${c.title}</h3><p>${c.body}</p></div>`).join("")}</div><div class="question">${scene.question}</div><div class="source-links"><span class="muted">Source pages:</span>${scene.refs.map(i=>link(DATA.sources[i])).join("")}</div>`;
   if(scene.examples) $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
     `<section class="examples" aria-label="Representative code samples">${scene.examples.map(example=>`<article class="example"><h3>${escapeHtml(example.title)}</h3><p>${escapeHtml(example.caption)}</p><pre><code data-language="${escapeHtml(example.language)}">${escapeHtml(example.code)}</code></pre></article>`).join("")}</section>`);
   if(scene.timeline) $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
     `<section class="timeline" aria-label="Release progression">${scene.timeline.map(item=>`<article class="milestone"><time datetime="${escapeHtml(item.date)}">${escapeHtml(item.date)}</time><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p><small>Architecture takeaway: ${escapeHtml(item.implication)}</small><div class="source-links">${item.refs.map(i=>link(DATA.sources[i])).join("")}</div></div></article>`).join("")}</section>`);
-  $("previous").disabled=state.step===0;
-  const last=state.step===track.steps.length-1;
+  if(scene.layers) $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
+    `<div class="layers-wrapper"><table class="layers" aria-label="Enterprise AI Landing Zone layers"><thead><tr><th scope="col">Layer</th><th scope="col">Name</th><th scope="col">Responsibility</th><th scope="col">Implementation</th></tr></thead><tbody>${scene.layers.map(layer=>`<tr><th scope="row">${escapeHtml(layer.layer)}</th><td>${escapeHtml(layer.name)}</td><td>${escapeHtml(layer.responsibility)}</td><td>${escapeHtml(layer.implementation)}</td></tr>`).join("")}</tbody></table></div>`);
+  if(scene.image){
+    $("slide").querySelector(".question").insertAdjacentHTML("beforebegin",
+      `<figure class="architecture"><a href="${escapeHtml(scene.image.path)}" target="_blank" rel="noopener noreferrer" aria-label="Open full-size AI Governance Hub architecture"><img src="${escapeHtml(scene.image.path)}" alt="${escapeHtml(scene.image.alt)}"></a><figcaption>${escapeHtml(scene.image.caption)} <a href="${escapeHtml(scene.image.path)}" target="_blank" rel="noopener noreferrer">Open full-size diagram ↗</a></figcaption><p class="image-error" role="alert" hidden>Architecture image could not load. Check the installation assets or use the original source link below.</p></figure>`);
+    $("slide").querySelector("img").addEventListener("error",()=>$("slide").querySelector(".image-error").hidden=false);
+  }
+  const sequence=state.present?visible:track.steps.map((step,index)=>({index}));
+  const position=sequence.findIndex(step=>step.index===state.step);
+  $("previous").disabled=position<=0;
+  const last=position===sequence.length-1;
   $("next").disabled=last;$("next").textContent=last?"Journey complete":"Next chapter";
-  $("position").textContent=`${state.step+1} / ${track.steps.length} chapters · ${track.minutes} min`;
+  $("position").textContent=`${state.step+1} / ${track.steps.length} chapters · ${selectedMinutes} min included`;
   $("position").classList.toggle("completed",last);
   $("progress").setAttribute("aria-valuemax",track.steps.length);$("progress").setAttribute("aria-valuenow",state.step+1);
   $("bar").style.width=`${100*(state.step+1)/track.steps.length}%`;
   $("note-text").textContent=scene.notes;
-  const before=track.steps.slice(0,state.step).reduce((sum,s)=>sum+s[1],0);
-  $("timing").textContent=`Planned window: ${before}–${before+minutes} minutes. Chapter budget: ${minutes} minutes, including discussion. Source snapshot: ${DATA.reviewed}.`;
+  const before=visible.filter(step=>step.index<state.step).reduce((sum,step)=>sum+step.minutes,0);
+  $("timing").textContent=hidden.includes(id)?`Hidden from Present. Source snapshot: ${DATA.reviewed}.`:`Planned window: ${before}–${before+minutes} minutes. Chapter budget: ${minutes} minutes, including discussion. Source snapshot: ${DATA.reviewed}.`;
   updateClock();
 }
 function renderDocuments(){
@@ -154,14 +188,15 @@ function updateClock(){
   const seconds=Math.floor((elapsed+(running?Date.now()-started:0))/1000);
   $("clock").value=`${String(Math.floor(seconds/60)).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`;
   const track=DATA.tracks.find(t=>t.id===state.track);
-  $("clock").classList.toggle("over",seconds>track.minutes*60);
+  $("clock").classList.toggle("over",seconds>visibleSteps(track).reduce((sum,step)=>sum+step.minutes,0)*60);
   $("timer-toggle").textContent=running?"Pause":"Start timer";
 }
 $("tracks").addEventListener("click",e=>{const b=e.target.closest("[data-track]");if(b)chooseTrack(b.dataset.track);});
-$("agenda").addEventListener("click",e=>{const b=e.target.closest("[data-step]");if(b)change({step:Number(b.dataset.step)});});
+$("agenda").addEventListener("click",e=>{const hide=e.target.closest("[data-hide]");if(hide){toggleSlide(hide.dataset.hide);return;}const b=e.target.closest("[data-step]");if(b)change({step:Number(b.dataset.step)});});
+$("restore-slides").addEventListener("click",()=>change({hiddenByTrack:{...state.hiddenByTrack,[state.track]:[]}}));
 $("previous").addEventListener("click",()=>move(-1));$("next").addEventListener("click",()=>move(1));
 $("notes-toggle").addEventListener("click",()=>change({notes:!state.notes}));
-$("present").addEventListener("click",()=>{library=false;change({present:true,notes:false});});
+$("present").addEventListener("click",startPresentation);
 $("exit").addEventListener("click",()=>change({present:false}));
 $("theme").addEventListener("click",()=>document.documentElement.setAttribute("data-theme",document.documentElement.dataset.theme==="dark"?"light":"dark"));
 $("library-toggle").addEventListener("click",()=>{library=!library;render();renderDocuments();});
@@ -173,7 +208,7 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight"&&!library){e.preventDefault();move(1);}
   if(e.key==="ArrowLeft"&&!library){e.preventDefault();move(-1);}
   if(e.key.toLowerCase()==="n"&&!state.present)change({notes:!state.notes});
-  if(e.key.toLowerCase()==="p"){library=false;change({present:!state.present,notes:false});}
+  if(e.key.toLowerCase()==="p"){if(state.present)change({present:false});else startPresentation();}
   if(e.key==="Escape"){library=false;change({present:false});}
 });
 $("caveats").innerHTML=DATA.caveats.map(c=>`<li>${escapeHtml(c)}</li>`).join("");

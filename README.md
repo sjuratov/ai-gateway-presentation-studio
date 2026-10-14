@@ -46,6 +46,23 @@ remain available.*
 Preparation mode provides an agenda, timing, presenter notes, a timer and a
 searchable documentation library. Present mode hides the level selectors,
 timing and notes, while keeping Back, Next chapter and Exit presentation.
+Use **Hide/Show** beside each agenda chapter before presenting. Hidden slides
+remain available for preparation but are skipped by both buttons and arrow keys
+in Present mode. Selections are saved independently for each journey; shared
+slides can be hidden in one level without affecting another. At least one slide
+must remain included. **Show all slides** restores the selected journey.
+Preparation shows the included slide count and remaining planned duration;
+the complete journeys retain their 5/30/60-minute targets.
+
+L300/L400 closes with an **Enterprise AI Landing Zone** four-layer table and an
+**AI Governance Hub architecture** slide. Both can be hidden like any other
+slide. These are attributed to
+[Azure-Samples/ai-hub-gateway-solution-accelerator](https://github.com/Azure-Samples/ai-hub-gateway-solution-accelerator).
+The original architecture diagram is bundled unchanged, including source labels
+and preview markers, under the upstream MIT license. Click the diagram to open
+it full-size. The accelerator is a broader APIM solution architecture, not an
+AI Gateway SKU feature matrix.
+
 The code examples are for display and discussion: this canvas does not execute
 them or provision Azure resources.
 
@@ -125,13 +142,18 @@ not separate synchronized presenter/audience views.
   extension.mjs    Copilot registration, loopback server and saved state
   content.mjs      Source catalog, curated chapters and timed journeys
   presenter.html  Theme, rendering and presentation controls
+  presentation-state.mjs  Saved state validation and hidden-slide migration
+  assets/ai-governance-hub.png  Attributed original architecture diagram
+  THIRD-PARTY-NOTICES.txt  Source-image license and attribution
 tests/
   content.test.mjs Dependency-free repository checks
 ```
 
 The running extension writes `artifacts/presentation.json` beside its entry
-point. This is per-installation local state (journey, chapter and display
-settings), not presentation source. `artifacts/` is ignored by Git.
+point. This is per-installation local state (journey, chapter, display
+settings and per-journey hidden slide IDs), not presentation source.
+Legacy state without hidden selections loads with every slide included.
+`artifacts/` is ignored by Git.
 Never add customer secrets, runtime keys, customer notes or local state to
 this repository.
 
